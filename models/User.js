@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const CHOICE_ENUM = {"NONE": 0, "HK": 1, "MACAU":2}
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
@@ -16,6 +17,7 @@ const userSchema = new mongoose.Schema({
   linkedin: String,
   steam: String,
   tokens: Array,
+  choice: { type: Number, default: CHOICE_ENUM.NONE },
 
   profile: {
     name: { type: String, default: '' },
