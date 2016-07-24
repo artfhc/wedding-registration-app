@@ -43,6 +43,11 @@ const passportConfig = require('./config/passport');
 const app = express();
 
 /**
+ * Constant variables
+ */
+const videoLink = 'https://s3-us-west-2.amazonaws.com/wedding-reg/wedding-reg.mp4'
+
+/**
  * Connect to MongoDB.
  */
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
@@ -124,6 +129,11 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.get('/video', (req, res) => {
+  res.render('video', {
+    vlink: videoLink
+  });
+})
 
 /**
  * API examples routes.
