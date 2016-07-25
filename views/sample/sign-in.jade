@@ -2,6 +2,7 @@ extends ../layout-video
 
 block content
   div.content
+    h1 Arthur's Wedding!
 
     form.form-horizontal(method='POST')
       input(type='hidden', name='_csrf', value=_csrf)
@@ -22,8 +23,9 @@ block content
           button.btn.btn-primary(type='submit')
             | Sign In
 
-          button.btn.btn-primary(style='margin-left: 20px;' type='submit')
-            | Sign Up
+          a(href='/sample/sign-up')
+            button.btn.btn-primary(style='margin-left: 20px;' type='button')
+             | Sign Up
 
     ul.icons
       li

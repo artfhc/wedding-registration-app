@@ -139,7 +139,12 @@ app.get('/sample/sign-in', (req, res) => {
   res.render('sample/sign-in', {
     vlink: videoLink
   });
-})
+});
+app.get('/sample/sign-up', (req, res) => {
+  res.render('sample/sign-up', {
+    vlink: videoLink
+  });
+});
 
 /**
  * API examples routes.
