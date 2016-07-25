@@ -137,12 +137,20 @@ app.get('/video', (req, res) => {
 });
 app.get('/sample/sign-in', (req, res) => {
   res.render('sample/sign-in', {
-    vlink: videoLink
+    vlink: videoLink,
+    route: 'sign-in-page'
   });
 });
 app.get('/sample/sign-up', (req, res) => {
   res.render('sample/sign-up', {
-    vlink: videoLink
+    vlink: videoLink,
+    route: 'sign-up-page'
+  });
+});
+app.get('/sample/voting', (req, res) => {
+  res.render('sample/voting', {
+    vlink: videoLink,
+    route: 'voting-page'
   });
 });
 

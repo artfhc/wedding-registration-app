@@ -15,7 +15,7 @@ html
         source(src=vlink, type='video/mp4')
         p Fallback content to cover incompatibility issues
 
-    .container.main
+    .container.main(class='#{route}')
       block content
 
     script(src='/js/lib/jquery-2.2.0.min.js')
