@@ -1,0 +1,37 @@
+extends ../layout-video
+
+block content
+  div.content
+
+    form.form-horizontal(method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        .input-group
+          span.input-group-addon
+            i.fa.fa-user.fa-fw(aria-hidden="true")
+          input.form-control(type='text', name='name', id='name', placeholder='Name', autofocus=true, required)
+      
+      .form-group
+        .input-group
+          span.input-group-addon
+            i.fa.fa-key.fa-fw(aria-hidden="true")
+          input.form-control(type='text', name='password', id='password' placeholder='Password', required)
+      
+      .form-group
+        .input-group
+          button.btn.btn-primary(type='submit')
+            | Sign In
+
+          button.btn.btn-primary(style='margin-left: 20px;' type='submit')
+            | Sign Up
+
+    ul.icons
+      li
+        a.fa.fa-twitter(href='/auth/twitter') | Twitter
+      li
+        a.fa.fa-facebook(href='/auth/facebook') | Facebook
+      li
+        a.fa.fa-google-plus(href='/auth/google') | Google+
+      li
+        a.fa.fa-weixin(href='/auth/wechat') | WeChat    
+

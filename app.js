@@ -134,6 +134,11 @@ app.get('/video', (req, res) => {
   res.render('video', {
     vlink: videoLink
   });
+});
+app.get('/sample/sign-in', (req, res) => {
+  res.render('sample/sign-in', {
+    vlink: videoLink
+  });
 })
 
 /**

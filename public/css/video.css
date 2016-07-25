@@ -6,21 +6,99 @@ p,
 a,
 video {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 html,
 body {
-  height: 100%;
+  height: 100%; }
+
+.container {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -moz-flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -moz-perspective: 1000px;
+  -webkit-perspective: 1000px;
+  -ms-perspective: 1000px;
+  perspective: 1000px;
+  position: relative;
+  min-height: 100%;
+  padding: 1.5em;
+  z-index: 2; }
+
+
+
+.container:before,
+.container:after {
+  content: " ";
+  display: table; 
 }
+
+@media screen and (min-width: 420px) {
+  .container {
+      width: 396px;
+  }
+}
+
+.content {
+  position: relative;
+  max-width: 100%;
+  min-width: 27em;
+  padding: 4.5em 3em 3em 3em;
+  background: #ffffff;
+  border-radius: 4px;
+  cursor: default;
+  opacity: 0.95;
+  text-align: center;
+  -moz-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -moz-transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -moz-transition: opacity 1s ease, -moz-transform 1s ease;
+  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+  -ms-transition: opacity 1s ease, -ms-transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease; }
+
+@media screen and (max-width: 480px) {
+  .content {
+    min-width: 0;
+    width: 100%;
+    padding: 4em 2em 2.5em 2em;
+  }
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100; }
 
 .fullscreenbg {
   position: fixed;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   z-index: 1;
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
-  transform: translate(-50%, -50%);
-}
+  transform: translate(-50%, -50%); }
