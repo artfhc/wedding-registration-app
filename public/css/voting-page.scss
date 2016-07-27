@@ -2,4 +2,22 @@
   &.container {
     width: auto;
   }
+
+  .content {
+    background: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .voting-card {
+      padding: 3em 2em 3em 2em;
+      background: #ffffff;
+      width: 45%;
+    }
+
+    .voting-divider {
+      width: 10%;
+    }
+  }
+
+  
 }
