@@ -10,11 +10,15 @@ html
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='/css/video.css')
   body
+
+    include header
+
     div.fullscreen-bg
       div.darker-layer
 
     .container.main(class='#{route}')
       div.content
+        
         form.form-horizontal(method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
 
