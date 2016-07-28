@@ -18,9 +18,9 @@ html
 
     .container.main(class='#{route}')
       div.content
-        
-        form.form-horizontal(method='POST')
+        form.form-horizontal(action='/api/choose', method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
+          input(type='hidden', name='choice', value='HK')
 
           .row
             .voting-card.col-sm-5.col-md-5
@@ -30,7 +30,7 @@ html
                   h3 Hong Kong
                   p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
                   p
-                    a.btn.btn-primary(role="button" type="submit") Go
+                    button.btn.btn-primary(role="button" type="submit") Go
             .voting-divider.col-sm-1.col-md-1
             .voting-card.col-sm-5.col-md-5
               .thumbnail
@@ -39,7 +39,7 @@ html
                   h3 Macau
                   p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
                   p
-                    a.btn.btn-primary(role="button" type="submit") Go
+                    button.btn.btn-primary(role="button" type="submit") Go
 
 
 

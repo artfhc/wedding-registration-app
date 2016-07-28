@@ -4,6 +4,9 @@ const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
 
+const CHOICE_ENUM = {"NONE": 0, "HK": 1, "MACAU":2};
+const REVERSE_CHOICE_ENUM = {0: "NONE", 1: "HK", 2: "MACAU"};
+
 /**
  * GET /login
  * Login page.
@@ -148,8 +151,11 @@ exports.postUpdateProfile = (req, res, next) => {
         }
         return next(err);
       }
-      req.flash('success', { msg: 'Profile information has been updated.' });
-      res.redirect('/account');
+      // req.flash('success', { msg: 'Profile information has been updated.' });
+      // res.redirect('/account');
+      res.setHeader('Content-Type', 'application/json');
+      res.statusCode = 201;
+      res.send(JSON.stringify({ message: 'profile has been updated' }));
     });
   });
 };
@@ -369,5 +375,50 @@ exports.postForgot = (req, res, next) => {
   ], (err) => {
     if (err) { return next(err); }
     res.redirect('/forgot');
+  });
+};
+
+
+
+/**
+ * POST /api/choose
+ * Choose the location of the wedding. Only 1 choice is allowed
+ */
+exports.chooseWeddingLocation = (req, res, next) => {
+  req.assert('choice', 'A choice is required.').notEmpty();
+  const errors = req.validationErrors();
+  res.setHeader('Content-Type', 'application/json');
+  if (errors) { 
+    res.statusCode = 400;
+    res.send(JSON.stringify({ message: 'A choice is required.' }));
+  } else if (!(req.body.choice in CHOICE_ENUM)) {
+    console.log('choice: ' + req.body.choice + " | type: " + typeof(req.body.choice));
+    res.statusCode = 400;
+    res.send(JSON.stringify({ message: 'A choice is not valid. Please try again.' }));
+  } else {
+    User.findById(req.user.id, (err, user) => {
+      if (err) { return next(err); }
+      user.choice = CHOICE_ENUM[req.body.choice] || CHOICE_ENUM.NONE;
+      user.save((err) => {
+        if (err) {
+          if (err.code === 11000) {
+            req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+            return res.redirect('/account');
+          }
+          return next(err);
+        }
+        res.statusCode = 201;
+        res.send(JSON.stringify({ message: 'The choice has been updated' }));
+      });
+    });
+  }
+}
+
+exports.getWeddingLocation = (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    res.statusCode = 200;
+    res.send(JSON.stringify({ choice: REVERSE_CHOICE_ENUM[Number(user.choice)] }));
   });
 };
