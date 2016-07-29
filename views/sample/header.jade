@@ -24,9 +24,21 @@
                 img.img-circle(src='#{user.profile.picture}')
               else
                 img.img-circle(src='#{user.gravatar(60)}')
-            ul.dropdown-menu
-              li
-                a(href='/') Translate
-              li.divider
-              li
-                a(href='/logout') Logout
+            div.dropdown-menu
+              div.clearfix
+                div.profile-pic-container
+                  if user.profile.picture
+                    img.img-circle(src='#{user.profile.picture}')
+                  else
+                    img.img-circle(src='#{user.gravatar(60)}')
+                div.profile-info-container
+                  ul
+                    li 
+                      strong #{user.profile.name}
+                    li #{user.email}
+              div.profile-buttons
+                a.btn.btn-primary.btn-translate(href="#", role="button") Translate
+                a.btn.btn-primary.btn-logout(href="/logout", role="button") Logout
+
+                //button.btn.btn-primary(role="button" type="submit") Translate
+                //button.btn.btn-primary(role="button" type="submit") Logout
