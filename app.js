@@ -257,4 +257,11 @@ app.listen(app.get('port'), () => {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
+/**
+ * Handle 404
+ */
+app.use((req, res, next) => {
+  res.status(404).render('404', { url: req.url });
+})
+
 module.exports = app;
