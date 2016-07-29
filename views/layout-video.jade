@@ -10,6 +10,10 @@ html
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='/css/video.css')
   body
+
+    if user
+      include sample/header
+
     div.fullscreen-bg
       //div.darker-layer
       video#fullscreenvideo.fullscreenbg(autoplay='', muted='', loop='' pause='')

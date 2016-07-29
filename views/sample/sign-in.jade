@@ -7,25 +7,22 @@ block content
     form.form-horizontal(method='POST')
       input(type='hidden', name='_csrf', value=_csrf)
       .form-group
-        .input-group
-          span.input-group-addon
-            i.fa.fa-user.fa-fw(aria-hidden="true")
-          input.form-control(type='text', name='name', id='name', placeholder='Name', autofocus=true, required)
+        //span.input-group-addon
+        //  i.fa.fa-user.fa-fw(aria-hidden="true")
+        input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true, required)
       
       .form-group
-        .input-group
-          span.input-group-addon
-            i.fa.fa-key.fa-fw(aria-hidden="true")
-          input.form-control(type='text', name='password', id='password' placeholder='Password', required)
+        //span.input-group-addon
+        //  i.fa.fa-key.fa-fw(aria-hidden="true")
+        input.form-control(type='password', name='password', id='password' placeholder='Password', required)
       
       .form-group
-        .input-group
-          button.btn.btn-primary(type='submit')
-            | Sign In
+        button.btn.btn-primary(type='submit', style="width: 100%;") 
+          | Sign In
 
-          a(href='/sample/sign-up')
-            button.btn.btn-primary(style='margin-left: 20px;' type='button')
-             | Sign Up
+      .form-group
+        a.btn.btn-primary(href="/sample/sign-up", role="button", style="width: 100%;") 
+          | Sign Up
 
     ul.icons
       li

@@ -7,17 +7,58 @@
     background: none;
   }
 
-  @media screen and (min-width: 768px) {
-    .voting-card {
-      padding: 3em 2em 3em 2em;
-      background: #ffffff;
-      width: 45%;
-    }
 
-    .voting-divider {
-      width: 10%;
+  .voting-card {
+    padding: 0;
+    background: #ffffff;
+    width: 245px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .voting-card:not(.unselectable):hover {
+    outline: #4d90fc solid 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .voting-card {
+      width: 245px;
+      margin: 10px auto;
     }
   }
 
-  
+  .voting-card .thumbnail {
+    margin-bottom: 0;
+  }
+
+  .voting-card .thumbnail button {
+    width: 100%;
+  }
+
+  .voting-card .thumbnail .thumbnail-img {
+    position: relative;
+  }
+
+  .voting-card .thumbnail .thumbnail-img h2 {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+  }
+
+  .grey-out {
+    cursor: not-allowed;
+    background-color: white;
+    filter:alpha(opacity=50); /* IE */
+    opacity: 0.5; /* Safari, Opera */
+    -moz-opacity:0.50; /* FireFox */
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+  }
+
 }

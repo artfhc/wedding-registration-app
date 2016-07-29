@@ -136,18 +136,26 @@ app.get('/video', (req, res) => {
   });
 });
 app.get('/sample/sign-in', (req, res) => {
+  if (req.user) {
+    return res.redirect('/sample/voting');
+  }
   res.render('sample/sign-in', {
     vlink: videoLink,
     route: 'sign-in-page'
   });
 });
+app.post('/sample/sign-in', userController.postLogin);
+
 app.get('/sample/sign-up', (req, res) => {
+  if (req.user) {
+    return res.redirect('/sample/voting');
+  }
   res.render('sample/sign-up', {
     vlink: videoLink,
     route: 'sign-up-page'
   });
 });
-app.get('/sample/voting', (req, res) => {
+app.get('/sample/voting', passportConfig.isAuthenticated, (req, res) => {
   res.render('sample/voting', {
     vlink: videoLink,
     route: 'voting-page'
