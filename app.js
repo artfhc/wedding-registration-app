@@ -118,15 +118,15 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
-app.get('/login', userController.getLogin);
-app.post('/login', userController.postLogin);
-app.get('/logout', userController.logout);
+// app.get('/', homeController.index);
+// app.get('/login', userController.getLogin);
+// app.post('/login', userController.postLogin);
+// app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
-app.get('/signup', userController.getSignup);
+// app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
@@ -141,18 +141,18 @@ app.get('/video', (req, res) => {
   });
 });
 
-app.get('/sample/sign-in', (req, res) => {
+app.get('/login', (req, res) => {
   if (req.user) {
-    return res.redirect('/sample/voting');
+    return res.redirect('/');
   }
-  res.renderPjax('sample/sign-in', {
+  res.renderPjax('pjax/sign-in', {
     layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'sign-in-page'
   });
 });
 
-app.post('/sample/sign-in', (req, res, next) => {
+app.post('/login', (req, res, next) => {
   req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password cannot be blank').notEmpty();
   req.sanitize('email').normalizeEmail({ remove_dots: false });
@@ -161,41 +161,47 @@ app.post('/sample/sign-in', (req, res, next) => {
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/sample/sign-in');
+    return res.redirect('/signin');
   }
 
   passport.authenticate('local', (err, user, info) => {
     if (err) { return next(err); }
     if (!user) {
       req.flash('errors', info);
-      return res.redirect('/sample/sign-in');
+      return res.redirect('/signin');
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/sample/voting');
+      console.log('return: ' + req.session.returnTo);
+      res.redirect(req.session.returnTo || '/');
     });
   })(req, res, next);
 });
 
 
-app.get('/sample/sign-up', (req, res) => {
+app.get('/signup', (req, res) => {
   if (req.user) {
-    return res.redirect('/sample/voting');
+    return res.redirect('/');
   }
-  res.renderPjax('sample/sign-up', {
+  res.renderPjax('pjax/sign-up', {
     layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'sign-up-page'
   });
 });
 
-app.get('/sample/voting', passportConfig.isAuthenticated, (req, res) => {
-  res.render('sample/voting', {
+app.get('/', passportConfig.isAuthenticated, (req, res) => {
+  res.render('pjax/voting', {
     layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'voting-page'
   });
+});
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 /**
@@ -246,6 +252,7 @@ app.get('/auth/instagram/callback', passport.authenticate('instagram', { failure
 });
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
+  console.log('return: ' + req.session.returnTo)
   res.redirect(req.session.returnTo || '/');
 });
 app.get('/auth/github', passport.authenticate('github'));
