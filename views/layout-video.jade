@@ -5,6 +5,7 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
+    meta(name='csrf-token', content=_csrf)
     title #{title} - Wedding App
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
@@ -25,22 +26,11 @@ html
       //block content
 
     script(src='/js/lib/jquery-2.2.0.min.js')
-    <script src="https://code.jquery.com/jquery-migrate-1.4.1.js" integrity="sha256-xoqICUSqAwguiLvmx993R+5F9Qb6d352+0FwmgulqTU=" crossorigin="anonymous"></script>
+    script(src='/js/lib/jquery-migrate-1.4.1.min.js')
     script(src="/js/lib/jquery.pjax.js")
     script(src='/js/lib/bootstrap.min.js')
-    script(src='/js/main.js')
-    
-    script(type="text/javascript")
-      | $(function(){
-      |   var pjaxTriggerList = [
-      |     'button[type="submit"]',
-      |     'a[href="/sample/sign-in"]', 
-      |     'a[href="/sample/sign-up"]', 
-      |     'a[href="/sample/voting"]'
-      |   ];
-      |   // pjax
-      |   $(pjaxTriggerList.toString()).pjax(".container");
-      | });
+    script(src='/js/main.js')    
+    script(src='/js/pjax-pages.js')
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
