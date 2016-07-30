@@ -1,7 +1,7 @@
 div.content.sign-up-page
   h1 Sign Up
 
-  form.form-horizontal(method='POST')
+  form.form-horizontal(method='POST', action='/signup')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       input.form-control(type='text', name='first-name', id='first-name', placeholder='First Name', autofocus=true, required)
@@ -30,4 +30,4 @@ div.content.sign-up-page
         | Signup
 
     .form-group
-      a.btn.btn-primary(href="/sample/sign-in", role="button", style="width: 100%;") Back
+      a.btn.btn-primary(href="/login", role="button", style="width: 100%;") Back

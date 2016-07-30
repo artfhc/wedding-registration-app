@@ -1,10 +1,11 @@
 $(function(){
   var pjaxTriggerList = [
-    'a[href="/sample/sign-in"]', 
-    'a[href="/sample/sign-up"]', 
-    'a[href="/sample/voting"]'
+    'a[href="/login"]', 
+    'a[href="/signup"]', 
+    'a[href="/"]', 
+    'a[href="/logout"]'
   ];
   var pjaxContainer = '.container';
 
-  $(document).pjax(pjaxTriggerList.toString(), pjaxContainer);
+  $(document).pjax(pjaxTriggerList.join(), pjaxContainer);
 });

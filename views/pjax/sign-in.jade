@@ -1,7 +1,7 @@
 div.content.sign-in-page
   h1 Arthur's Wedding!
 
-  form.form-horizontal(method='POST')
+  form.form-horizontal(method='POST', action='/login')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true, required)
@@ -14,7 +14,7 @@ div.content.sign-in-page
         | Sign In
 
     .form-group
-      a.btn.btn-primary(href="/sample/sign-up", role="button", style="width: 100%;") 
+      a.btn.btn-primary(href="/signup", role="button", style="width: 100%;") 
         | Sign Up
 
   ul.icons
