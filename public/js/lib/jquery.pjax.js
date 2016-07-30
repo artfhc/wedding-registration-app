@@ -210,6 +210,7 @@ function pjax(options) {
       settings.timeout = 0
     }
 
+    xhr.setRequestHeader('x-csrf-token', $('meta[name="csrf-token"]').attr('content'));
     xhr.setRequestHeader('X-PJAX', 'true')
     xhr.setRequestHeader('X-PJAX-Container', context.selector)
 

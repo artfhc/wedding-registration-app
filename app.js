@@ -146,26 +146,53 @@ app.get('/sample/sign-in', (req, res) => {
     return res.redirect('/sample/voting');
   }
   res.renderPjax('sample/sign-in', {
-    layout: 'layout-video.jade',
+    layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'sign-in-page'
   });
 });
-app.post('/sample/sign-in', userController.postLogin);
+
+app.post('/sample/sign-in', (req, res, next) => {
+  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('password', 'Password cannot be blank').notEmpty();
+  req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/sample/sign-in');
+  }
+
+  passport.authenticate('local', (err, user, info) => {
+    if (err) { return next(err); }
+    if (!user) {
+      req.flash('errors', info);
+      return res.redirect('/sample/sign-in');
+    }
+    req.logIn(user, (err) => {
+      if (err) { return next(err); }
+      req.flash('success', { msg: 'Success! You are logged in.' });
+      res.redirect(req.session.returnTo || '/sample/voting');
+    });
+  })(req, res, next);
+});
+
 
 app.get('/sample/sign-up', (req, res) => {
   if (req.user) {
     return res.redirect('/sample/voting');
   }
   res.renderPjax('sample/sign-up', {
-    layout: 'layout-video.jade',
+    layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'sign-up-page'
   });
 });
+
 app.get('/sample/voting', passportConfig.isAuthenticated, (req, res) => {
-  res.renderPjax('sample/voting', {
-    layout: 'layout-video.jade',
+  res.render('sample/voting', {
+    layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'voting-page'
   });

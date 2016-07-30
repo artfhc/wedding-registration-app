@@ -1,7 +1,7 @@
 div.content.sign-in-page
   h1 Arthur's Wedding!
 
-  form.form-horizontal(method='POST', action="/sample/sign-in", data-pjax=".container")
+  form.form-horizontal(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true, required)

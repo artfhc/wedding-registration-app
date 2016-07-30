@@ -16,14 +16,12 @@ html
       include sample/header
 
     div.fullscreen-bg
-      //div.darker-layer
       video#fullscreenvideo.fullscreenbg(autoplay='', muted='', loop='' pause='')
         source(src=vlink, type='video/mp4')
         p Fallback content to cover incompatibility issues
 
     .container.main
       != body
-      //block content
 
     script(src='/js/lib/jquery-2.2.0.min.js')
     script(src='/js/lib/jquery-migrate-1.4.1.min.js')
