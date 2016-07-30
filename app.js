@@ -192,7 +192,6 @@ app.get('/sample/sign-up', (req, res) => {
 
 app.get('/sample/voting', passportConfig.isAuthenticated, (req, res) => {
   res.render('sample/voting', {
-    layout: 'layout-video-pjax.jade',
     vlink: videoLink,
     route: 'voting-page'
   });
