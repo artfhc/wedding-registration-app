@@ -22,6 +22,8 @@
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
     "express-flash": "^0.0.2",
+    "express-partials": "^0.3.0",
+    "express-pjax": "0.0.1",
     "express-session": "^1.14.0",
     "express-validator": "^2.20.8",
     "fbgraph": "^1.2.0",

@@ -45,12 +45,6 @@ body {
   display: table; 
 }
 
-@media screen and (min-width: 420px) {
-  .container {
-      width: 396px;
-  }
-}
-
 .content {
   position: relative;
   max-width: 100%;

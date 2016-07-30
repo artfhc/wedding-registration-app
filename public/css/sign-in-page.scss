@@ -1,49 +1,51 @@
-.sign-in-page {
+.content.sign-in-page {
 
-form .form-group {
-  margin-bottom: 8px;
-}
+  min-width: auto;
 
-ul.icons {
-  cursor: default;
-  list-style: none;
-  padding-left: 0;
-  margin-top: -0.675em;
-  margin-left: -15px;
-  margin-right: -15px;
-}
+  form .form-group {
+    margin-bottom: 8px;
+  }
 
-ul.icons li {
-  display: inline-block;
-  padding: 0.675em 0.5em;
-}
+  ul.icons {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+    margin-top: -0.675em;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 
-ul.icons li a {
-  cursor: pointer;
-  text-decoration: none;
-  position: relative;
-  display: block;
-  width: 3.75em;
-  height: 3.75em;
-  border-radius: 100%;
-  border: solid 1px #c8cccf;
-  line-height: 3.75em;
-  overflow: hidden;
-  text-align: center;
-  text-indent: 3.75em;
-  white-space: nowrap;
-}
+  ul.icons li {
+    display: inline-block;
+    padding: 0.675em 0.5em;
+  }
 
-ul.icons li a:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: inherit;
-  height: inherit;
-  font-size: 2.85rem;
-  line-height: inherit;
-  text-align: center;
-  text-indent: 0;
-}
+  ul.icons li a {
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 100%;
+    border: solid 1px #c8cccf;
+    line-height: 3.75em;
+    overflow: hidden;
+    text-align: center;
+    text-indent: 3.75em;
+    white-space: nowrap;
+  }
+
+  ul.icons li a:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    font-size: 2.85rem;
+    line-height: inherit;
+    text-align: center;
+    text-indent: 0;
+  }
 
 }

@@ -2,6 +2,8 @@
  * Module dependencies.
  */
 const express = require('express');
+const pjax = require('express-pjax');
+const partials = require('express-partials')
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -71,6 +73,9 @@ app.use(sass({
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(partials());
+app.use(pjax());
+
 app.use(expressValidator());
 app.use(session({
   resave: true,
@@ -135,11 +140,13 @@ app.get('/video', (req, res) => {
     vlink: videoLink
   });
 });
+
 app.get('/sample/sign-in', (req, res) => {
   if (req.user) {
     return res.redirect('/sample/voting');
   }
-  res.render('sample/sign-in', {
+  res.renderPjax('sample/sign-in', {
+    layout: 'layout-video.jade',
     vlink: videoLink,
     route: 'sign-in-page'
   });
@@ -150,13 +157,15 @@ app.get('/sample/sign-up', (req, res) => {
   if (req.user) {
     return res.redirect('/sample/voting');
   }
-  res.render('sample/sign-up', {
+  res.renderPjax('sample/sign-up', {
+    layout: 'layout-video.jade',
     vlink: videoLink,
     route: 'sign-up-page'
   });
 });
 app.get('/sample/voting', passportConfig.isAuthenticated, (req, res) => {
-  res.render('sample/voting', {
+  res.renderPjax('sample/voting', {
+    layout: 'layout-video.jade',
     vlink: videoLink,
     route: 'voting-page'
   });

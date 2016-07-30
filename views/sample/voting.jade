@@ -1,26 +1,23 @@
-extends ../layout-video
+div.content.voting-page
+  form.form-horizontal(action='/api/choose', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='choice', value='HK')
 
-block content
-  div.content
-    form.form-horizontal(action='/api/choose', method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
-      input(type='hidden', name='choice', value='HK')
-
-      .row
-        .voting-card.col-sm-5.col-md-5
-          .thumbnail
-            div.thumbnail-img
-              img.img(src='/img/placeholder.svg')
-              h2 Hong Kong
-            .caption
-              p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.  
-            button.btn.btn-primary(role="button" type="submit") Go
-        .voting-card.col-sm-5.col-md-5.unselectable
-          div.grey-out
-          .thumbnail
-            div.thumbnail-img
-              img.img(src='/img/placeholder.svg')
-              h2 Macau
-            .caption
-              p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-            button.btn.btn-warning(role="button" type="submit") Go
+    .row
+      .voting-card.col-sm-5.col-md-5
+        .thumbnail
+          div.thumbnail-img
+            img.img(src='/img/placeholder.svg')
+            h2 Hong Kong
+          .caption
+            p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.  
+          button.btn.btn-primary(role="button" type="submit") Go
+      .voting-card.col-sm-5.col-md-5.unselectable
+        div.grey-out
+        .thumbnail
+          div.thumbnail-img
+            img.img(src='/img/placeholder.svg')
+            h2 Macau
+          .caption
+            p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          button.btn.btn-warning(role="button" type="submit") Go

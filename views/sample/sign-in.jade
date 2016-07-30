@@ -1,36 +1,33 @@
-extends ../layout-video
+div.content.sign-in-page
+  h1 Arthur's Wedding!
 
-block content
-  div.content
-    h1 Arthur's Wedding!
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      //span.input-group-addon
+      //  i.fa.fa-user.fa-fw(aria-hidden="true")
+      input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true, required)
+    
+    .form-group
+      //span.input-group-addon
+      //  i.fa.fa-key.fa-fw(aria-hidden="true")
+      input.form-control(type='password', name='password', id='password' placeholder='Password', required)
+    
+    .form-group
+      button.btn.btn-primary(type='submit', style="width: 100%;") 
+        | Sign In
 
-    form.form-horizontal(method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
-      .form-group
-        //span.input-group-addon
-        //  i.fa.fa-user.fa-fw(aria-hidden="true")
-        input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true, required)
-      
-      .form-group
-        //span.input-group-addon
-        //  i.fa.fa-key.fa-fw(aria-hidden="true")
-        input.form-control(type='password', name='password', id='password' placeholder='Password', required)
-      
-      .form-group
-        button.btn.btn-primary(type='submit', style="width: 100%;") 
-          | Sign In
+    .form-group
+      a.btn.btn-primary(href="/sample/sign-up", role="button", style="width: 100%;") 
+        | Sign Up
 
-      .form-group
-        a.btn.btn-primary(href="/sample/sign-up", role="button", style="width: 100%;") 
-          | Sign Up
-
-    ul.icons
-      li
-        a.fa.fa-twitter(href='/auth/twitter') | Twitter
-      li
-        a.fa.fa-facebook(href='/auth/facebook') | Facebook
-      li
-        a.fa.fa-google-plus(href='/auth/google') | Google+
-      li
-        a.fa.fa-weixin(href='/auth/wechat') | WeChat    
+  ul.icons
+    li
+      a.fa.fa-twitter(href='/auth/twitter') | Twitter
+    li
+      a.fa.fa-facebook(href='/auth/facebook') | Facebook
+    li
+      a.fa.fa-google-plus(href='/auth/google') | Google+
+    li
+      a.fa.fa-weixin(href='/auth/wechat') | WeChat    
 

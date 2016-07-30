@@ -1,36 +1,33 @@
-extends ../layout-video
+div.content.sign-up-page
+  h1 Sign Up
 
-block content
-  div.content
-    h1 Sign Up
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      input.form-control(type='text', name='first-name', id='first-name', placeholder='First Name', autofocus=true, required)
 
-    form.form-horizontal(method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
-      .form-group
-        input.form-control(type='text', name='first-name', id='first-name', placeholder='First Name', autofocus=true, required)
+    .form-group
+      input.form-control(type='text', name='last-name', id='last-name', placeholder='Last Name', autofocus=true, required)
+    
+    .form-group
+      //span.input-group-addon
+      //  i.fa.fa-envelope.fa-fw(aria-hidden="true")
+      input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
 
-      .form-group
-        input.form-control(type='text', name='last-name', id='last-name', placeholder='Last Name', autofocus=true, required)
-      
-      .form-group
-        //span.input-group-addon
-        //  i.fa.fa-envelope.fa-fw(aria-hidden="true")
-        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+    .form-group
+      //span.input-group-addon
+      //  i.fa.fa-key.fa-fw(aria-hidden="true")
+      input.form-control(type='password', name='password', id='password', placeholder='Password', required)
 
-      .form-group
-        //span.input-group-addon
-        //  i.fa.fa-key.fa-fw(aria-hidden="true")
-        input.form-control(type='password', name='password', id='password', placeholder='Password', required)
+    .form-group
+      //span.input-group-addon
+      //  i.fa.fa-check.fa-fw(aria-hidden="true")
+      input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', required)
+    
+    .form-group
+      button.btn.btn-success(type='submit', style="width: 100%;")
+        i.fa.fa-user-plus
+        | Signup
 
-      .form-group
-        //span.input-group-addon
-        //  i.fa.fa-check.fa-fw(aria-hidden="true")
-        input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', required)
-      
-      .form-group
-        button.btn.btn-success(type='submit', style="width: 100%;")
-          i.fa.fa-user-plus
-          | Signup
-
-      .form-group
-        a.btn.btn-primary(href="/sample/sign-in", role="button", style="width: 100%;") Back
+    .form-group
+      a.btn.btn-primary(href="/sample/sign-in", role="button", style="width: 100%;") Back

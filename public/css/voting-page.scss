@@ -1,13 +1,10 @@
-.voting-page {
-  &.container {
+.content.voting-page {
+  .container & {
     width: auto;
   }
 
-  .content {
-    background: none;
-  }
-
-
+  background: none;
+  
   .voting-card {
     padding: 0;
     background: #ffffff;

@@ -1,9 +1,7 @@
-.sign-up-page {
-  .content {
-    min-width: auto;
-    width: 275px;
-  }
-
+.content.sign-up-page {
+  min-width: auto;
+  width: 275px;
+  
   form .form-group {
     margin-bottom: 8px;
   }

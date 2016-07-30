@@ -20,12 +20,27 @@ html
         source(src=vlink, type='video/mp4')
         p Fallback content to cover incompatibility issues
 
-    .container.main(class='#{route}')
-      block content
+    .container.main
+      != body
+      //block content
 
     script(src='/js/lib/jquery-2.2.0.min.js')
+    <script src="https://code.jquery.com/jquery-migrate-1.4.1.js" integrity="sha256-xoqICUSqAwguiLvmx993R+5F9Qb6d352+0FwmgulqTU=" crossorigin="anonymous"></script>
+    script(src="/js/lib/jquery.pjax.js")
     script(src='/js/lib/bootstrap.min.js')
     script(src='/js/main.js')
+    
+    script(type="text/javascript")
+      | $(function(){
+      |   var pjaxTriggerList = [
+      |     'button[type="submit"]',
+      |     'a[href="/sample/sign-in"]', 
+      |     'a[href="/sample/sign-up"]', 
+      |     'a[href="/sample/voting"]'
+      |   ];
+      |   // pjax
+      |   $(pjaxTriggerList.toString()).pjax(".container");
+      | });
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
