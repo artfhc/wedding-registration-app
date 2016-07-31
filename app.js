@@ -191,14 +191,8 @@ app.get('/signup', (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-app.get('/sample/voting', passportConfig.isAuthenticated, (req, res) => {
-  res.render('sample/voting', {
-=======
 app.get('/', passportConfig.isAuthenticated, (req, res) => {
   res.render('pjax/voting', {
-    layout: 'layout-video-pjax.jade',
->>>>>>> fa5018cb80d9e06530cf2fbc5386e2829d992a13
     vlink: videoLink,
     route: 'voting-page'
   });
