@@ -146,7 +146,7 @@ app.get('/login', (req, res) => {
     return res.redirect('/');
   }
   res.renderPjax('pjax/sign-in', {
-    layout: 'layout-video-pjax.jade',
+    layout: 'layout.jade',
     vlink: videoLink,
     route: 'sign-in-page'
   });
@@ -185,14 +185,15 @@ app.get('/signup', (req, res) => {
     return res.redirect('/');
   }
   res.renderPjax('pjax/sign-up', {
-    layout: 'layout-video-pjax.jade',
+    layout: 'layout.jade',
     vlink: videoLink,
     route: 'sign-up-page'
   });
 });
 
 app.get('/', passportConfig.isAuthenticated, (req, res) => {
-  res.render('pjax/voting', {
+  res.renderPjax('pjax/voting', {
+    layout: 'layout.jade',
     vlink: videoLink,
     route: 'voting-page'
   });
