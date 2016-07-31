@@ -13,9 +13,6 @@ html
     link(rel='stylesheet', href='/css/carousel.css')
   body
 
-    if user
-      include pjax/header
-
     include pjax/carousel
     //div.fullscreen-bg
     //  video#fullscreenvideo.fullscreenbg(autoplay='', muted='', loop='' pause='')
@@ -23,6 +20,8 @@ html
     //    p Fallback content to cover incompatibility issues
 
     .container.main
+      if user
+        include pjax/header
       != body
 
     script(src='/js/lib/jquery-2.2.0.min.js')
