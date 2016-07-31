@@ -36,6 +36,17 @@
     position: relative;
   }
 
+  .voting-card .thumbnail .thumbnail-img i.fa.fa-star {
+    font-size: 2em;
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+
+  .voting-card .thumbnail .thumbnail-img i.fa.fa-star.selected {
+    color: gold;
+  }
+
   .voting-card .thumbnail .thumbnail-img h2 {
     position: absolute;
     bottom: 0;
