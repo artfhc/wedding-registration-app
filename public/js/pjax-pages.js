@@ -5,7 +5,7 @@ $(function(){
     'a[href="/"]', 
     'a[href="/logout"]'
   ];
-  var pjaxContainer = '.container';
+  var pjaxContainer = '.pjax-container';
 
   $(document).pjax(pjaxTriggerList.join(), pjaxContainer);
 });

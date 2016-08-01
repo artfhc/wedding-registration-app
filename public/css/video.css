@@ -12,7 +12,7 @@ html,
 body {
   height: 100%; }
 
-.container {
+.pjax-container {
   display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
@@ -39,8 +39,12 @@ body {
   z-index: 2; 
 }
 
-.container:before,
-.container:after {
+.container {
+  width: auto;
+}
+
+.pjax-container:before,
+.pjax-container:after {
   content: " ";
   display: table; 
 }

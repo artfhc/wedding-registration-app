@@ -19,10 +19,12 @@ html
     //    source(src=vlink, type='video/mp4')
     //    p Fallback content to cover incompatibility issues
 
-    .container.main
+
+    .pjax-container
       if user
         include pjax/header
-      != body
+      .container.main
+        != body
 
     script(src='/js/lib/jquery-2.2.0.min.js')
     script(src='/js/lib/jquery-migrate-1.4.1.min.js')
