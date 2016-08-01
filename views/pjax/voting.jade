@@ -1,4 +1,9 @@
 div.content.voting-page
+  .alert.alert-success.fade.in.voting-alert.hide
+    button.close(type='button')
+      i.fa.fa-times-circle-o
+    div(class="voting-message" style="text-align: left;")
+
   form.form-horizontal(id='voting-form', action='/api/choose', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     input(type='hidden', name='choice', value='NONE')
