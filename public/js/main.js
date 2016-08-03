@@ -10,7 +10,7 @@ $(document).ready(function() {
   var $votingCards = $votingForm.find('.voting-card');
   var $votingAlert = $votingPage.find('.voting-alert');
 
-  $votingCards.click(function(event) {
+  $(document).on('click', '.voting-card', function(event) {
     // Update choice input value
     var chooseVal = $(this).attr('data-choose');
     $votingForm.find('input[name="choice"]').val(chooseVal);
@@ -29,11 +29,21 @@ $(document).ready(function() {
       $votingAlert.removeClass('hide');
       $votingAlert.find('.voting-message').text(response.message);
     });
-    
   });
 
-  $votingAlert.find('button').click(function(event) {
+  $(document).on('click', '.voting-alert button', function(event) {
     $votingAlert.addClass('hide');
   });
 
+  $(document).on('click', 'a.btn-translate', function(event) {
+    event.preventDefault();
+
+    if($(this).attr('data-locale') == 'en') {
+      Cookies.set('lang', 'zh', { expires: 7 });
+    } else {
+      Cookies.set('lang', 'en', { expires: 7 });
+    }
+
+    window.location = window.location.href;
+  });
 });

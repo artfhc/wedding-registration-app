@@ -408,7 +408,7 @@ exports.chooseWeddingLocation = (req, res, next) => {
           return next(err);
         }
         res.statusCode = 201;
-        res.send(JSON.stringify({ message: 'The choice has been updated' }));
+        res.send(JSON.stringify({ message: req.i18n.__("voting:success") }));
       });
     });
   }

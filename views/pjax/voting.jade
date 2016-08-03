@@ -1,38 +1,40 @@
-div.content.voting-page
-  .alert.alert-success.fade.in.voting-alert.hide
-    button.close(type='button')
-      i.fa.fa-times-circle-o
-    div(class="voting-message" style="text-align: left;")
+include header
+.container.main
+  div.content.voting-page
+    .alert.alert-success.fade.in.voting-alert.hide
+      button.close(type='button')
+        i.fa.fa-times-circle-o
+      div(class="voting-message" style="text-align: left;")
 
-  form.form-horizontal(id='voting-form', action='/api/choose', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    input(type='hidden', name='choice', value='NONE')
+    form.form-horizontal(id='voting-form', action='/api/choose', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      input(type='hidden', name='choice', value='NONE')
 
-    .row
-      .voting-card.col-sm-5.col-md-5(data-choose='HK')
-        .thumbnail
-          div.thumbnail-img
-            img.img(src='/img/placeholder.svg')
-            if user.choice == '1'
-              i.fa.fa-star.selected(aria-hidden="true")
-            else
-              i.fa.fa-star(aria-hidden="true")
-            h2 Hong Kong
-          .caption
-            p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.  
-          //button.btn.btn-primary(role="button" type="submit") Go
-      .voting-card.col-sm-5.col-md-5(data-choose='MACAU')
-        //div.grey-out
-        .thumbnail
-          div.thumbnail-img
-            img.img(src='/img/placeholder.svg')
-            if user.choice == '2'
-              i.fa.fa-star.selected(aria-hidden="true")
-            else
-              i.fa.fa-star(aria-hidden="true")
-            h2 Macau
-          .caption
-            p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-          //button.btn.btn-warning(role="button" type="submit") Go
+      .row
+        .voting-card.col-sm-5.col-md-5(data-choose='HK')
+          .thumbnail
+            div.thumbnail-img
+              img.img(src='/img/placeholder.svg')
+              if user.choice == '1'
+                i.fa.fa-star.selected(aria-hidden="true")
+              else
+                i.fa.fa-star(aria-hidden="true")
+              h2 #{i18n.__("voting:hong-kong")}
+            .caption
+              p #{i18n.__("voting:hong-kong-description")}
+            //button.btn.btn-primary(role="button" type="submit") Go
+        .voting-card.col-sm-5.col-md-5(data-choose='MACAU')
+          //div.grey-out
+          .thumbnail
+            div.thumbnail-img
+              img.img(src='/img/placeholder.svg')
+              if user.choice == '2'
+                i.fa.fa-star.selected(aria-hidden="true")
+              else
+                i.fa.fa-star(aria-hidden="true")
+              h2 #{i18n.__("voting:macau")}
+            .caption
+              p #{i18n.__("voting:macau-description")}
+            //button.btn.btn-warning(role="button" type="submit") Go
 
 

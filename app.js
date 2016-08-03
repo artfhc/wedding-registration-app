@@ -2,6 +2,9 @@
  * Module dependencies.
  */
 const express = require('express');
+const cookieParser = require('cookie-parser');
+//const I18n = require('i18n-node');
+const i18n = require('i18n-2');
 const pjax = require('express-pjax');
 const partials = require('express-partials')
 const compression = require('compression');
@@ -50,6 +53,13 @@ const app = express();
  */
 const videoLink = 'https://s3-us-west-2.amazonaws.com/wedding-reg/wedding-reg.mp4'
 
+i18n.expressBind(app, {
+    // setup some locales - other locales default to en silently
+    locales: ['en', 'zh'],
+    cookieName: 'lang',
+    directory: __dirname + '/locales/'
+});
+
 /**
  * Connect to MongoDB.
  */
@@ -73,8 +83,13 @@ app.use(sass({
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(partials());
 app.use(pjax());
+app.use(function(req, res, next) {
+  req.i18n.setLocaleFromCookie();
+  next();
+});
 
 app.use(expressValidator());
 app.use(session({
@@ -148,7 +163,8 @@ app.get('/login', (req, res) => {
   res.renderPjax('pjax/sign-in', {
     layout: 'layout.jade',
     vlink: videoLink,
-    route: 'sign-in-page'
+    route: 'sign-in-page',
+    i18n: req.i18n
   });
 });
 
@@ -187,15 +203,16 @@ app.get('/signup', (req, res) => {
   res.renderPjax('pjax/sign-up', {
     layout: 'layout.jade',
     vlink: videoLink,
-    route: 'sign-up-page'
+    route: 'sign-up-page',
+    i18n: req.i18n
   });
 });
 
 app.get('/', passportConfig.isAuthenticated, (req, res) => {
   res.renderPjax('pjax/voting', {
-    layout: 'layout.jade',
     vlink: videoLink,
-    route: 'voting-page'
+    route: 'voting-page',
+    i18n: req.i18n
   });
 });
 

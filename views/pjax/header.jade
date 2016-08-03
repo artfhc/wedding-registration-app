@@ -6,19 +6,28 @@
         //span.icon-bar
         //span.icon-bar
         //span.icon-bar
-        if user.profile.picture
-          img.img-circle(src='#{user.profile.picture}')
-        else
-          img.img-circle(src='#{user.gravatar(60)}')
+        if user
+          if user.profile.picture
+            img.img-circle(src='#{user.profile.picture}')
+          else
+            img.img-circle(src='#{user.gravatar(60)}')
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        if !user
-          li(class=(title == 'Login') ? 'active' : undefined)
-            a(href='/login') Login
-          li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
-        else
-          li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
+        //- if !user
+        //-   li(class=(title == 'Login') ? 'active' : undefined)
+        //-     a(href='/login') Login
+        //-   li(class=(title == 'Create Account') ? 'active' : undefined)
+        //-     a(href='/signup') Create Account
+        //- else
+        li
+          a.btn-translate(href="#", data-locale=(i18n.locale == 'en') ? 'en' : 'zh')
+            button.btn.btn-primary(style="margin-top: 13px;")
+              if i18n.locale == 'en'
+                | Chinese
+              else
+                | English
+        li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
+          if user
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               if user.profile.picture
                 img.img-circle(src='#{user.profile.picture}')
@@ -27,10 +36,11 @@
             div.dropdown-menu
               div.clearfix
                 div.profile-pic-container
-                  if user.profile.picture
-                    img.img-circle(src='#{user.profile.picture}')
-                  else
-                    img.img-circle(src='#{user.gravatar(60)}')
+
+                    if user.profile.picture
+                      img.img-circle(src='#{user.profile.picture}')
+                    else
+                      img.img-circle(src='#{user.gravatar(60)}')
                 div.profile-info-container
                   ul
                     li 

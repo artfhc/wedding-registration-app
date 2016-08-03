@@ -1,29 +1,32 @@
-div.content.sign-in-page
-  h1 Arthur's Wedding!
+include header
+.container.main
+  div.content.sign-in-page
+    h1 #{i18n.__("sign-in:title")}
+    //- div #{ i18n.__("hello", "ME") }
 
-  form.form-horizontal(method='POST', action='/login')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true, required)
-    
-    .form-group
-      input.form-control(type='password', name='password', id='password' placeholder='Password', required)
-    
-    .form-group
-      button.btn.btn-primary(type='submit', style="width: 100%;") 
-        | Sign In
+    form.form-horizontal(method='POST', action='/login')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        input.form-control(type='text', name='email', id='email', placeholder='#{i18n.__("sign-in:email")}', autofocus=true, required)
+      
+      .form-group
+        input.form-control(type='password', name='password', id='password' placeholder='#{i18n.__("sign-in:password")}', required)
+      
+      .form-group
+        button.btn.btn-primary(type='submit', style="width: 100%;") 
+          | #{i18n.__("sign-in:sign-in")}
 
-    .form-group
-      a.btn.btn-primary(href="/signup", role="button", style="width: 100%;") 
-        | Sign Up
+      .form-group
+        a.btn.btn-primary(href="/signup", role="button", style="width: 100%;") 
+          | #{i18n.__("sign-in:sign-up")}
 
-  ul.icons
-    li
-      a.fa.fa-twitter(href='/auth/twitter') | Twitter
-    li
-      a.fa.fa-facebook(href='/auth/facebook') | Facebook
-    li
-      a.fa.fa-google-plus(href='/auth/google') | Google+
-    li
-      a.fa.fa-instagram(href='/auth/instagram') | Instagram    
+    ul.icons
+      li
+        a.fa.fa-twitter(href='/auth/twitter') | Twitter
+      li
+        a.fa.fa-facebook(href='/auth/facebook') | Facebook
+      li
+        a.fa.fa-google-plus(href='/auth/google') | Google+
+      li
+        a.fa.fa-instagram(href='/auth/instagram') | Instagram    
 
